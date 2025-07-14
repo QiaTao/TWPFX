@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!--  定义自定义字体资源  -->
+    <FontFamily x:Key="JetBrainsMono">/TWPFX;component/Assets/Font/#JetBrains Mono</FontFamily>
+    <FontFamily x:Key="JetBrainsMonoSemiBold">/TWPFX;component/Assets/Font/#JetBrains Mono SemiBold</FontFamily>
+    <FontFamily x:Key="KingsoftCloud">/TWPFX;component/Assets/Font/#金山云技术体</FontFamily>
+    <FontFamily x:Key="FZLanTingYuan">/TWPFX;component/Assets/Font/#方正兰亭圆简体_纤</FontFamily>
+</ResourceDictionary>
