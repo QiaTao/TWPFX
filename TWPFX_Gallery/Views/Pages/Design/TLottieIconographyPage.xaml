@@ -2,6 +2,7 @@
     x:Class="TWPFX_Gallery.Views.Pages.Design.TLottieIconographyPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:codeblock="clr-namespace:TWPFX.Controls.TextBlock.CodeBlock;assembly=TWPFX"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:icon="clr-namespace:TWPFX_Gallery.Controls.Icon"
     xmlns:local="clr-namespace:TWPFX_Gallery.Views.Pages.Design"
@@ -24,8 +25,8 @@
                 ToolTipService.ShowDuration="2000">
                 <ToolTipService.ToolTip>
                     <StackPanel>
-                        <Image Source="C:\Users\qiata\Desktop\1a89215c-9b1a-4366-91e6-02a60eac03b0.jpg"/>
-                        <TextBlock Text="多行提示"/>
+                        <Image Source="C:\Users\qiata\Desktop\1a89215c-9b1a-4366-91e6-02a60eac03b0.jpg" />
+                        <TextBlock Text="多行提示" />
                     </StackPanel>
                 </ToolTipService.ToolTip>
             </ui:AutoSuggestBox>
@@ -57,7 +58,7 @@
         </StackPanel>
         <Border
             Grid.Row="1"
-            Height="610"
+            Height="630"
             Margin="0,6,0,0"
             Padding="10"
             Background="{StaticResource TAreaBackgroundDefault}"
@@ -78,7 +79,7 @@
                 </ScrollViewer>
                 <StackPanel
                     Grid.Column="1"
-                    Width="310"
+                    Width="410"
                     Background="{StaticResource TCardBackgroundDefault}">
                     <lottieicon:TLottieIcon
                         Width="61"
@@ -126,24 +127,22 @@
                         FontSize="11"
                         Foreground="Gray"
                         Text="XAML" />
-                    <TextBlock
+                    <codeblock:TCodeBlock
                         Margin="18,6,18,0"
-                        HorizontalAlignment="Left"
-                        FontSize="13"
-                        Text="{Binding XamlString}"
-                        TextWrapping="Wrap" />
+                        Code="{Binding XamlString}"
+                        CodeStyle="Github_Dark"
+                        ShowCopyButton="True" />
                     <TextBlock
                         Margin="18,36,18,0"
                         HorizontalAlignment="Left"
                         FontSize="11"
                         Foreground="Gray"
                         Text="C#" />
-                    <TextBlock
+                    <codeblock:TCodeBlock
                         Margin="18,6,18,0"
-                        HorizontalAlignment="Left"
-                        FontSize="13"
-                        Text="{Binding CSharpString}"
-                        TextWrapping="Wrap" />
+                        Code="{Binding CSharpString}"
+                        CodeStyle="Github_Dark"
+                        ShowCopyButton="True" />
                 </StackPanel>
             </Grid>
         </Border>

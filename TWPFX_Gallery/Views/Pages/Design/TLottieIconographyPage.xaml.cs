@@ -158,7 +158,7 @@ namespace TWPFX_Gallery.Views.Pages.Design
         {
             if (SelectedItem != null)
             {
-                XamlString = $"<LottieIcon IconType=\"{SelectedItem.IType}\" IconStyle=\"{PStyle}\" AnimationMode=\"{PAnimationMode}\"/>";
+                XamlString = $"<LottieIcon\r\n    IconType=\"{SelectedItem.IType}\"\r\n    IconStyle=\"{PStyle}\"\r\n    AnimationMode=\"{PAnimationMode}\"/>";
                 CSharpString = $"LottieIcon lottieIcon = new() {{ \r\n    IconType = LottieIconType.{SelectedItem.IType},\r\n    IconStyle = LottieIconStyle.{PStyle},\r\n    AnimationMode = LottieIconAnimationMode.{PAnimationMode}\r\n}};";
             }
         }
