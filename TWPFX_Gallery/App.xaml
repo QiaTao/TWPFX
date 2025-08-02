@@ -3,6 +3,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:local="clr-namespace:TWPFX.Helpers;assembly=TWPFX"
     DispatcherUnhandledException="OnDispatcherUnhandledException"
     Exit="OnExit"
     Startup="OnStartup">
@@ -14,6 +16,9 @@
                 <ResourceDictionary Source="/TWPFX;component/Themes/Generic.xaml"/>
                 <ResourceDictionary Source="/TWPFX;component/Themes/Fonts.xaml"/>
             </ResourceDictionary.MergedDictionaries>
+            <!-- BooleanToVisibilityConverter -->
+            <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+            <local:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

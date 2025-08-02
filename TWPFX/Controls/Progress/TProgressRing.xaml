@@ -1,0 +1,42 @@
+<UserControl x:Class="TWPFX.Controls.Progress.TProgressRing"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:TWPFX.Controls.Progress"
+             xmlns:conv="clr-namespace:TWPFX.Helpers.Converters" 
+             xmlns:helpers="clr-namespace:TWPFX.Helpers"
+             Width="48" Height="48">
+    <UserControl.Resources>
+        <conv:RadiusAndThicknessToDiameterConverter x:Key="RadiusAndThicknessToDiameterConverter"/>
+        <helpers:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter"/>
+    </UserControl.Resources>
+    <Grid>
+        <Ellipse x:Name="Ellipse"
+                 Stroke="#EEE"
+                 StrokeThickness="{Binding StrokeThickness, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                 Visibility="{Binding IsIndeterminate, RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource InverseBooleanToVisibilityConverter}}">
+            <Ellipse.Width>
+                <MultiBinding Converter="{StaticResource RadiusAndThicknessToDiameterConverter}">
+                    <Binding Path="Radius" RelativeSource="{RelativeSource AncestorType=UserControl}"/>
+                    <Binding Path="StrokeThickness" RelativeSource="{RelativeSource AncestorType=UserControl}"/>
+                </MultiBinding>
+            </Ellipse.Width>
+            <Ellipse.Height>
+                <MultiBinding Converter="{StaticResource RadiusAndThicknessToDiameterConverter}">
+                    <Binding Path="Radius" RelativeSource="{RelativeSource AncestorType=UserControl}"/>
+                    <Binding Path="StrokeThickness" RelativeSource="{RelativeSource AncestorType=UserControl}"/>
+                </MultiBinding>
+            </Ellipse.Height>
+        </Ellipse>
+        <Path x:Name="Arc"
+              Stroke="{Binding StrokeColor, RelativeSource={RelativeSource AncestorType=UserControl}}"
+              StrokeThickness="{Binding StrokeThickness, RelativeSource={RelativeSource AncestorType=UserControl}}"
+              StrokeStartLineCap="Round"
+              StrokeEndLineCap="Round"
+              Data="M24,6 A18,18 0 1 1 23.99,6"
+              RenderTransformOrigin="0.5,0.5">
+            <Path.RenderTransform>
+                <RotateTransform x:Name="SpinnerRotate" CenterX="0.5" CenterY="0.5"/>
+            </Path.RenderTransform>
+        </Path>
+    </Grid>
+</UserControl>

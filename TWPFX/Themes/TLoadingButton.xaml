@@ -1,0 +1,92 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:loading="clr-namespace:TWPFX.Controls.Button.TButton"
+    xmlns:helpers="clr-namespace:TWPFX.Helpers"
+    xmlns:progress="clr-namespace:TWPFX.Controls.Progress">
+
+    <!--  转换器  -->
+    <helpers:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+    <helpers:DoubleToThicknessConverter x:Key="DoubleToThicknessConverter" />
+    <helpers:DoubleToCornerRadiusConverter x:Key="DoubleToCornerRadiusConverter" />
+
+    <!--  加载按钮模板  -->
+    <ControlTemplate x:Key="TLoadingButtonTemplate" TargetType="loading:TLoadingButton">
+        <Grid>
+            <!--  背景和内容  -->
+            <Border
+                x:Name="border"
+                Padding="{TemplateBinding Padding}"
+                Background="{TemplateBinding BackgroundColor}"
+                BorderBrush="{TemplateBinding BorderColor}"
+                BorderThickness="{TemplateBinding BorderThickness,
+                                                  Converter={StaticResource DoubleToThicknessConverter}}"
+                CornerRadius="{TemplateBinding CornerRadius,
+                                               Converter={StaticResource DoubleToCornerRadiusConverter}}"
+                Cursor="Hand"
+                RenderOptions.BitmapScalingMode="HighQuality"
+                RenderOptions.EdgeMode="Unspecified"
+                SnapsToDevicePixels="True">
+                <Grid
+                    x:Name="contentPanel">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>   
+                    </Grid.ColumnDefinitions>
+                    <progress:TProgressRing
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        x:Name="loadingRing"
+                        StrokeColor="{TemplateBinding LoadingRingColor}"
+                        StrokeThickness="{TemplateBinding LoadingRingStrokeThickness}"
+                        Visibility="{TemplateBinding LoadingRingVisibility}"
+                        IsIndeterminate="True" />
+                    <TextBlock
+                        Grid.Column="1"
+                        x:Name="textElement"
+                        FontFamily="Segoe UI, Microsoft YaHei, SimSun, sans-serif"
+                        VerticalAlignment="Center"
+                        FontSize="{TemplateBinding FontSize}"
+                        FontWeight="{TemplateBinding FontWeight}"
+                        Foreground="{TemplateBinding TextColor}"
+                        Text="{TemplateBinding Text}"
+                        TextOptions.TextFormattingMode="Display"
+                        TextOptions.TextRenderingMode="ClearType"
+                        Visibility="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource NullToVisibilityConverter}}" />
+                </Grid>
+            </Border>
+        </Grid>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Background" Value="{Binding HoverBackgroundColor, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Setter TargetName="border" Property="BorderBrush" Value="{Binding HoverBorderColor, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Setter TargetName="loadingRing" Property="StrokeColor" Value="{Binding HoverLoadingRingColor, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Setter TargetName="textElement" Property="Foreground" Value="{Binding HoverTextColor, RelativeSource={RelativeSource TemplatedParent}}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="border" Property="Background" Value="{Binding PressedBackgroundColor, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Setter TargetName="border" Property="BorderBrush" Value="{Binding PressedBorderColor, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Setter TargetName="loadingRing" Property="StrokeColor" Value="{Binding PressedLoadingRingColor, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Setter TargetName="textElement" Property="Foreground" Value="{Binding PressedTextColor, RelativeSource={RelativeSource TemplatedParent}}" />
+            </Trigger>
+            <DataTrigger Binding="{Binding IsLoading, RelativeSource={RelativeSource TemplatedParent}}" Value="True">
+                <Setter Property="LoadingRingVisibility" Value="Visible" />
+                <Setter TargetName="textElement" Property="Margin" Value="8,0,0,0" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding IsLoading, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
+                <Setter Property="LoadingRingVisibility" Value="Collapsed" />
+                <Setter TargetName="textElement" Property="Margin" Value="0" />
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource NullToVisibilityConverter}}" Value="Collapsed">
+                <Setter TargetName="loadingRing" Property="Margin" Value="0" />
+            </DataTrigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="border" Property="Opacity" Value="0.6" />
+                <Setter TargetName="loadingRing" Property="Opacity" Value="0.7" />
+                <Setter TargetName="textElement" Property="Opacity" Value="0.7" />
+                <Setter TargetName="border" Property="Cursor" Value="Arrow" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+</ResourceDictionary> 

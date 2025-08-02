@@ -23,21 +23,22 @@ namespace TWPFX.Controls.Notification.InfoBar
         /// <param name="severity">提示条的严重等级。</param>
         /// <param name="position">提示条的位置。</param>
         /// <param name="duration">提示条的显示持续时间。</param>
+        /// <param name="isShadowEnabled">是否显示阴影</param>
         /// <param name="playMode">动画播放模式。</param>
         /// <param name="action">可选的操作按钮。</param>
         static void CreateAdorner(string title, string content, TInfoBarSeverity severity = TInfoBarSeverity.Success,
-            TInfoBarPosition position = TInfoBarPosition.TOP_RIGHT, int duration = 2000, TInfoBarPlayMode playMode = TInfoBarPlayMode.Once, ButtonBase? action = null)
+            TInfoBarPosition position = TInfoBarPosition.TOP_RIGHT, int duration = 2000, bool isShadowEnabled = false, TInfoBarPlayMode playMode = TInfoBarPlayMode.Once, ButtonBase? action = null)
         {
             if (_infoBarAdorner != null)
             {
-                _infoBarAdorner.Push(title, content, severity, position, duration, playMode, action);
+                _infoBarAdorner.Push(title, content, severity, position, duration, isShadowEnabled, playMode, action);
                 return;
             }
             var owner = GetDefaultWindow(); // 直接获取默认窗口
             var layer = GetAdornerLayer(owner) ?? throw new Exception("AdornerLayer not found.");
             _infoBarAdorner = new TInfoBarAdorner(layer);
             layer.Add(_infoBarAdorner);
-            _infoBarAdorner.Push(title, content, severity, position, duration, playMode, action);
+            _infoBarAdorner.Push(title, content, severity, position, duration, isShadowEnabled, playMode, action);
         }
 
         /// <summary>
@@ -47,12 +48,29 @@ namespace TWPFX.Controls.Notification.InfoBar
         /// <param name="content">提示条的内容。</param>
         /// <param name="position">提示条的位置。</param>
         /// <param name="duration">提示条的显示持续时间。</param>
+        /// <param name="isShadowEnabled">是否显示阴影</param>
         /// <param name="playMode">动画播放模式。</param>
         /// <param name="action">可选的操作按钮。</param>
         public static void Info(string title, string content, TInfoBarPosition position = TInfoBarPosition.TOP_RIGHT,
-            int duration = 2000, TInfoBarPlayMode playMode = TInfoBarPlayMode.Once, ButtonBase? action = null)
+            int duration = 2000, bool isShadowEnabled = false, TInfoBarPlayMode playMode = TInfoBarPlayMode.Once, ButtonBase? action = null)
         {
-            CreateAdorner(title: title, content: content, position: position, duration: duration, playMode: playMode, action: action, severity: TInfoBarSeverity.Info);
+            CreateAdorner(title: title, content: content, position: position, duration: duration, isShadowEnabled: isShadowEnabled, playMode: playMode, action: action, severity: TInfoBarSeverity.Info);
+        }
+
+        /// <summary>
+        /// 显示信息类型的提示条(标题默认为时间)。
+        /// </summary>
+        /// <param name="content">提示条的内容。</param>
+        /// <param name="position">提示条的位置。</param>
+        /// <param name="duration">提示条的显示持续时间。</param>
+        /// <param name="isShadowEnabled">是否显示阴影</param>
+        /// <param name="playMode">动画播放模式。</param>
+        /// <param name="action">可选的操作按钮。</param>
+        public static void Info(string content, TInfoBarPosition position = TInfoBarPosition.TOP_RIGHT,
+            int duration = 2000, bool isShadowEnabled = false, TInfoBarPlayMode playMode = TInfoBarPlayMode.Once, ButtonBase? action = null)
+        {
+
+            CreateAdorner(title: DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"), content: content, position: position, duration: duration, isShadowEnabled: isShadowEnabled, playMode: playMode, action: action, severity: TInfoBarSeverity.Info);
         }
 
         /// <summary>
@@ -62,12 +80,28 @@ namespace TWPFX.Controls.Notification.InfoBar
         /// <param name="content">提示条的内容。</param>
         /// <param name="position">提示条的位置。</param>
         /// <param name="duration">提示条的显示持续时间。</param>
+        /// <param name="isShadowEnabled">是否显示阴影</param>
         /// <param name="playMode">动画播放模式。</param>
         /// <param name="action">可选的操作按钮。</param>
         public static void Success(string title, string content, TInfoBarPosition position = TInfoBarPosition.TOP_RIGHT,
-            int duration = 2000, TInfoBarPlayMode playMode = TInfoBarPlayMode.Once, ButtonBase? action = null)
+            int duration = 2000, bool isShadowEnabled = false, TInfoBarPlayMode playMode = TInfoBarPlayMode.Once, ButtonBase? action = null)
         {
-            CreateAdorner(title: title, content: content, position: position, duration: duration, playMode: playMode, action: action, severity: TInfoBarSeverity.Success);
+            CreateAdorner(title: title, content: content, position: position, duration: duration, isShadowEnabled: isShadowEnabled, playMode: playMode, action: action, severity: TInfoBarSeverity.Success);
+        }
+
+        /// <summary>
+        /// 显示成功类型的提示条(标题默认为时间)。
+        /// </summary>
+        /// <param name="content">提示条的内容。</param>
+        /// <param name="position">提示条的位置。</param>
+        /// <param name="duration">提示条的显示持续时间。</param>
+        /// <param name="isShadowEnabled">是否显示阴影</param>
+        /// <param name="playMode">动画播放模式。</param>
+        /// <param name="action">可选的操作按钮。</param>
+        public static void Success(string content, TInfoBarPosition position = TInfoBarPosition.TOP_RIGHT,
+            int duration = 2000, bool isShadowEnabled = false, TInfoBarPlayMode playMode = TInfoBarPlayMode.Once, ButtonBase? action = null)
+        {
+            CreateAdorner(title: DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"), content: content, position: position, duration: duration, isShadowEnabled: isShadowEnabled, playMode: playMode, action: action, severity: TInfoBarSeverity.Success);
         }
 
         /// <summary>
@@ -77,12 +111,28 @@ namespace TWPFX.Controls.Notification.InfoBar
         /// <param name="content">提示条的内容。</param>
         /// <param name="position">提示条的位置。</param>
         /// <param name="duration">提示条的显示持续时间。</param>
+        /// <param name="isShadowEnabled">是否显示阴影</param>
         /// <param name="playMode">动画播放模式。</param>
         /// <param name="action">可选的操作按钮。</param>
         public static void Warning(string title, string content, TInfoBarPosition position = TInfoBarPosition.TOP_RIGHT,
-            int duration = 2000, TInfoBarPlayMode playMode = TInfoBarPlayMode.Once, ButtonBase? action = null)
+            int duration = 2000, bool isShadowEnabled = false, TInfoBarPlayMode playMode = TInfoBarPlayMode.Once, ButtonBase? action = null)
         {
-            CreateAdorner(title: title, content: content, position: position, duration: duration, playMode: playMode, action: action, severity: TInfoBarSeverity.Warning);
+            CreateAdorner(title: title, content: content, position: position, duration: duration, isShadowEnabled: isShadowEnabled, playMode: playMode, action: action, severity: TInfoBarSeverity.Warning);
+        }
+
+        /// <summary>
+        /// 显示警告类型的提示条(标题默认为时间)。
+        /// </summary>
+        /// <param name="content">提示条的内容。</param>
+        /// <param name="position">提示条的位置。</param>
+        /// <param name="duration">提示条的显示持续时间。</param>
+        /// <param name="isShadowEnabled">是否显示阴影</param>
+        /// <param name="playMode">动画播放模式。</param>
+        /// <param name="action">可选的操作按钮。</param>
+        public static void Warning(string content, TInfoBarPosition position = TInfoBarPosition.TOP_RIGHT,
+            int duration = 2000, bool isShadowEnabled = false, TInfoBarPlayMode playMode = TInfoBarPlayMode.Once, ButtonBase? action = null)
+        {
+            CreateAdorner(title: DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"), content: content, position: position, duration: duration, isShadowEnabled: isShadowEnabled, playMode: playMode, action: action, severity: TInfoBarSeverity.Warning);
         }
 
         /// <summary>
@@ -92,12 +142,28 @@ namespace TWPFX.Controls.Notification.InfoBar
         /// <param name="content">提示条的内容。</param>
         /// <param name="position">提示条的位置。</param>
         /// <param name="duration">提示条的显示持续时间。</param>
+        /// <param name="isShadowEnabled">是否显示阴影</param>
         /// <param name="playMode">动画播放模式。</param>
         /// <param name="action">可选的操作按钮。</param>
         public static void Error(string title, string content, TInfoBarPosition position = TInfoBarPosition.TOP_RIGHT,
-            int duration = 2000, TInfoBarPlayMode playMode = TInfoBarPlayMode.Once, ButtonBase? action = null)
+            int duration = 2000, bool isShadowEnabled = false, TInfoBarPlayMode playMode = TInfoBarPlayMode.Once, ButtonBase? action = null)
         {
-            CreateAdorner(title: title, content: content, position: position, duration: duration, playMode: playMode, action: action, severity: TInfoBarSeverity.Error);
+            CreateAdorner(title: title, content: content, position: position, duration: duration, isShadowEnabled: isShadowEnabled, playMode: playMode, action: action, severity: TInfoBarSeverity.Error);
+        }
+
+        /// <summary>
+        /// 显示错误类型的提示条(标题默认为时间)。
+        /// </summary>
+        /// <param name="content">提示条的内容。</param>
+        /// <param name="position">提示条的位置。</param>
+        /// <param name="duration">提示条的显示持续时间。</param>
+        /// <param name="isShadowEnabled">是否显示阴影</param>
+        /// <param name="playMode">动画播放模式。</param>
+        /// <param name="action">可选的操作按钮。</param>
+        public static void Error(string content, TInfoBarPosition position = TInfoBarPosition.TOP_RIGHT,
+            int duration = 2000, bool isShadowEnabled = false, TInfoBarPlayMode playMode = TInfoBarPlayMode.Once, ButtonBase? action = null)
+        {
+            CreateAdorner(title: DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss"), content: content, position: position, duration: duration, isShadowEnabled: isShadowEnabled, playMode: playMode, action: action, severity: TInfoBarSeverity.Error);
         }
 
         /// <summary>

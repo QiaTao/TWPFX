@@ -40,7 +40,19 @@ namespace TWPFX.Controls.Icon.SegoeIcon
         private static void OnDependencyPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             TSegoeIcon segoeIcon = (TSegoeIcon)d;
+            if (e.Property == ForegroundProperty)
+            {
+                if (e.OldValue is Brush oldBrush && !oldBrush.IsFrozen)
+                    oldBrush.Changed -= segoeIcon.OnBrushChanged;
+                if (e.NewValue is Brush newBrush && !newBrush.IsFrozen)
+                    newBrush.Changed += segoeIcon.OnBrushChanged;
+            }
             segoeIcon.InvalidateFormattedText();
+        }
+
+        private void OnBrushChanged(object sender, EventArgs e)
+        {
+            InvalidateFormattedText();
         }
 
         private static void OnGlyphPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
@@ -105,11 +117,13 @@ namespace TWPFX.Controls.Icon.SegoeIcon
         #endregion
 
         private FormattedText _formattedText;
+        private Brush _lastForeground;
 
         private void InvalidateFormattedText()
         {
-            _formattedText = null;
-            InvalidateVisual();
+            _formattedText = CreateFormattedText(); // 立即重建而不是设为null
+            InvalidateMeasure(); // 强制重新测量
+            InvalidateVisual(); // 强制重绘
         }
 
         static TSegoeIcon()

@@ -1,141 +1,275 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 
 namespace TWPFX.Service
 {
-    // 存储外部资源的元数据（基础路径+当前语言）
-    public class ExternalResourceInfo
-    {
-        public string AssemblyName { get; set; } // 外部程序集名称（简短标识）
-        public string CurrentLanguage { get; set; }
-    }
 
     public static class TLocalizationService
     {
-        // 内置固定路径模板（约定外部资源的存放规则）
-        private const string ExternalResourcePathTemplate =
-            "pack://application:,,,/{0};component/Resources/Languages/Strings.{1}.xaml";
-        // 格式说明：{0}=程序集名称，{1}=语言代码
+        private static readonly Dictionary<string, Dictionary<string, ResourceDictionary>> _loadedResources = [];   // 存储所有已加载程序集的语言资源字典
 
-        private static ResourceDictionary _defaultDictionary;
-        private static readonly Dictionary<string, ExternalResourceInfo> _externalResources = [];
-        private static string _currentLanguage;
+        private static string _currentLanguage = "en-US";  // 当前使用的语言代码
+        private static readonly List<string> _loadedAssemblies = [];  // 已加载本地化资源的程序集列表
 
-        // 静态构造函数 - 自动初始化
-        static TLocalizationService()
+        // 记录每个程序集当前应用的语言资源字典
+        private static readonly Dictionary<string, ResourceDictionary> _currentResourceDicts = [];
+
+        // 支持的语言列表（可扩展）
+        private static readonly HashSet<string> _supportedLanguages = new(StringComparer.OrdinalIgnoreCase) 
         {
-            Initialize();
+            "en-US", "en-GB",
+            "zh-CN", "zh-TW", "zh-HK",
+            "ja-JP", "ko-KR",
+            "fr-FR", "de-DE", "es-ES",
+            "ar-SA", "ru-RU"
+        };
+
+        /// <summary>
+        /// 添加支持的语言代码
+        /// </summary>
+        /// <param name="languageCode">要添加的BCP-47语言代码</param>
+        public static void AddSupportedLanguage(string languageCode)
+        {
+            if (!IsValidLanguageCode(languageCode))
+                throw new ArgumentException($"Invalid language code: {languageCode}");
+
+            _supportedLanguages.Add(NormalizeLanguageCode(languageCode));
         }
 
         /// <summary>
-        /// 初始化并加载默认语言（自动调用，无需手动触发）
+        /// 加载指定程序集的本地化资源
         /// </summary>
-        private static void Initialize()
+        /// <param name="assemblyName">程序集名称</param>
+        public static void LoadLocalization(string assemblyName)
         {
-            string sysLang = CultureInfo.CurrentCulture.Name;
-            _currentLanguage = sysLang == "zh-CN" ? "zh-CN" : "en-US";
-            LoadDefaultResource(_currentLanguage);
-        }
+            if (string.IsNullOrWhiteSpace(assemblyName))
+                throw new ArgumentException("Assembly name cannot be null or empty.");
 
-        /// <summary>
-        /// 注册外部程序集资源（仅需传入程序集名称，自动拼接路径）
-        /// </summary>
-        /// <param name="assemblyName">外部程序集名称（如"TWPFX_Gallery"）</param>
-        public static void ChangeLanguage(string assemblyName)
-        {
-            if (string.IsNullOrEmpty(assemblyName))
-                throw new ArgumentNullException(nameof(assemblyName), "程序集名称不能为空");
-
-            if (_externalResources.ContainsKey(assemblyName))
-            {
-                // 已注册过，直接刷新
-                ReloadExternalResource(assemblyName);
-                return;
-            }
-
-            // 存储程序集名称（后续用于生成路径）
-            _externalResources[assemblyName] = new ExternalResourceInfo
-            {
-                AssemblyName = assemblyName,
-                CurrentLanguage = null
-            };
-
-            ReloadExternalResource(assemblyName);
-        }
-
-        // 重新加载外部资源（使用内置模板生成路径）
-        private static void ReloadExternalResource(string assemblyName)
-        {
-            if (!_externalResources.TryGetValue(assemblyName, out var info))
+            if (_loadedAssemblies.Contains(assemblyName, StringComparer.OrdinalIgnoreCase))
                 return;
 
             try
             {
-                // 1. 移除旧资源
-                if (!string.IsNullOrEmpty(info.CurrentLanguage))
+                var languageDicts = new Dictionary<string, ResourceDictionary>(StringComparer.OrdinalIgnoreCase);
+
+                foreach (var lang in _supportedLanguages)
                 {
-                    string oldPath = string.Format(ExternalResourcePathTemplate, assemblyName, info.CurrentLanguage);
-                    var oldDict = Application.Current.Resources.MergedDictionaries
-                        .FirstOrDefault(d => d.Source?.OriginalString == oldPath);
-                    if (oldDict != null)
+                    string uriString = $"pack://application:,,,/{assemblyName};component/Resources/Langs/Lang.{lang}.xaml";
+
+                    try
                     {
-                        Application.Current.Resources.MergedDictionaries.Remove(oldDict);
+                        var resourceDict = new ResourceDictionary
+                        {
+                            Source = new Uri(uriString, UriKind.Absolute)
+                        };
+                        languageDicts[lang] = resourceDict;
+                        Debug.WriteLine($"Loaded {lang} resources for {assemblyName}");
+                    }
+                    catch (System.IO.IOException ex)
+                    {
+                        Debug.WriteLine($"Resource not found: {uriString}. Error: {ex.Message}");
+                    }
+                    catch (UriFormatException ex)
+                    {
+                        Debug.WriteLine($"Invalid URI format: {uriString}. Error: {ex.Message}");
                     }
                 }
 
-                // 2. 生成新路径（使用内置模板 + 程序集名称 + 当前语言）
-                string newPath = string.Format(ExternalResourcePathTemplate, assemblyName, _currentLanguage);
-                var newDict = new ResourceDictionary { Source = new Uri(newPath) };
-                Application.Current.Resources.MergedDictionaries.Add(newDict);
+                _loadedResources[assemblyName] = languageDicts;
+                _loadedAssemblies.Add(assemblyName);
 
-                // 3. 更新记录
-                info.CurrentLanguage = _currentLanguage;
+                ApplyLanguageToAssembly(assemblyName, _currentLanguage);
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"加载资源 {assemblyName}（{_currentLanguage}）失败：{ex.Message}");
+                Debug.WriteLine($"Error loading resources for {assemblyName}: {ex.Message}");
+                throw new InvalidOperationException($"Failed to load localization for {assemblyName}", ex);
             }
         }
 
-        // 加载默认资源（保持不变）
-        private static void LoadDefaultResource(string languageCode)
+        /// <summary>
+        /// 切换应用程序语言
+        /// </summary>
+        /// <param name="languageCode">BCP-47语言代码</param>
+        public static void ChangeLanguage(string languageCode)
         {
-            if (_defaultDictionary != null)
+            if (string.IsNullOrWhiteSpace(languageCode))
+                throw new ArgumentException("Language code cannot be null or empty.");
+
+            languageCode = NormalizeLanguageCode(languageCode);
+
+            if (!IsValidLanguageCode(languageCode))
+                throw new ArgumentException($"Invalid BCP-47 language code: {languageCode}");
+
+            if (string.Equals(_currentLanguage, languageCode, StringComparison.OrdinalIgnoreCase))
+                return;
+
+            _currentLanguage = languageCode;
+
+            foreach (var assembly in _loadedAssemblies.ToList())
             {
-                Application.Current.Resources.MergedDictionaries.Remove(_defaultDictionary);
+                ApplyLanguageToAssembly(assembly, languageCode);
             }
+        }
+
+        /// <summary>
+        /// 获取当前使用的语言代码
+        /// </summary>
+        public static string GetCurrentLanguage() => _currentLanguage;
+
+        /// <summary>
+        /// 获取支持的语言列表
+        /// </summary>
+        public static IReadOnlyCollection<string> GetSupportedLanguages() => _supportedLanguages;
+
+        /// <summary>
+        /// 将指定语言应用到程序集
+        /// </summary>
+        /// <param name="assemblyName">程序集名称</param>
+        /// <param name="languageCode">语言代码</param>
+        /// <remarks>
+        /// 此方法执行以下操作：
+        /// 1. 移除该程序集当前使用的语言资源
+        /// 2. 尝试加载精确匹配的语言资源
+        /// 3. 如果精确匹配失败，尝试主要语言回退（如 zh-CN → zh）
+        /// 4. 如果回退失败，使用英语作为最终回退
+        /// 5. 如果英语不可用，使用第一个可用的语言资源
+        /// </remarks>
+        private static void ApplyLanguageToAssembly(string assemblyName, string languageCode)
+        {
+            if (!_loadedResources.TryGetValue(assemblyName, out var languageDicts))
+                return;
+
+            var appDictionaries = Application.Current.Resources.MergedDictionaries;
+
+            // 只移除该程序集的语言资源，不影响其他资源
+            if (_currentResourceDicts.TryGetValue(assemblyName, out var currentDict))
+            {
+                appDictionaries.Remove(currentDict);
+                _currentResourceDicts.Remove(assemblyName);
+            }
+
+            // 尝试加载精确匹配的语言
+            if (languageDicts.TryGetValue(languageCode, out var newDict))
+            {
+                appDictionaries.Add(newDict);
+                _currentResourceDicts[assemblyName] = newDict;
+                Debug.WriteLine($"Applied language '{languageCode}' for {assemblyName}");
+                return;
+            }
+
+            // 回退机制：尝试主要语言部分
+            var mainLanguage = languageCode.Split('-')[0];
+            var fallbackDict = languageDicts.FirstOrDefault(x =>
+                x.Key.StartsWith(mainLanguage + "-", StringComparison.OrdinalIgnoreCase) ||
+                x.Key.Equals(mainLanguage, StringComparison.OrdinalIgnoreCase)).Value;
+
+            if (fallbackDict != null)
+            {
+                appDictionaries.Add(fallbackDict);
+                _currentResourceDicts[assemblyName] = fallbackDict;
+                Debug.WriteLine($"Fallback to '{fallbackDict.Source}' for {assemblyName}");
+                return;
+            }
+
+            // 最终回退到英语或第一个可用语言
+            if (languageDicts.TryGetValue("en-US", out var englishDict))
+            {
+                appDictionaries.Add(englishDict);
+                _currentResourceDicts[assemblyName] = englishDict;
+                Debug.WriteLine($"Using en-US as fallback for {assemblyName}");
+            }
+            else if (languageDicts.Count > 0)
+            {
+                var firstDict = languageDicts.Values.First();
+                appDictionaries.Add(firstDict);
+                _currentResourceDicts[assemblyName] = firstDict;
+                Debug.WriteLine($"Using first available language for {assemblyName}");
+            }
+        }
+
+        /// <summary>
+        /// 验证语言代码是否有效
+        /// </summary>
+        /// <param name="code">待验证的语言代码</param>
+        private static bool IsValidLanguageCode(string code)
+        {
+            try
+            {
+                var culture = CultureInfo.GetCultureInfo(code);
+                return culture != null;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// 规范化语言代码格式
+        /// </summary>
+        private static string NormalizeLanguageCode(string code)
+        {
+            try
+            {
+                var culture = CultureInfo.GetCultureInfo(code);
+                return culture.Name;
+            }
+            catch
+            {
+                return code;
+            }
+        }
+
+        /// <summary>
+        /// 获取本地化资源字符串
+        /// </summary>
+        /// <param name="key">资源键</param>
+        /// <param name="defaultValue">默认值，如果资源不存在则返回此值</param>
+        /// <returns>本地化的字符串值</returns>
+        public static string GetLocalizedString(string key, string defaultValue = null)
+        {
+            if (string.IsNullOrWhiteSpace(key))
+                return defaultValue ?? string.Empty;
 
             try
             {
-                string path = $"pack://application:,,,/TWPFX_Gallery;component/Resources/Languages/Strings.{languageCode}.xaml";
-                _defaultDictionary = new ResourceDictionary { Source = new Uri(path) };
-                Application.Current.Resources.MergedDictionaries.Add(_defaultDictionary);
+                // 尝试从应用程序资源中获取
+                if (Application.Current?.Resources?.Contains(key) == true)
+                {
+                    var resource = Application.Current.Resources[key];
+                    if (resource is string stringValue)
+                        return stringValue;
+                }
+
+                // 如果应用程序资源中没有，尝试从当前加载的资源字典中获取
+                foreach (var assembly in _loadedAssemblies)
+                {
+                    if (_currentResourceDicts.TryGetValue(assembly, out var resourceDict))
+                    {
+                        if (resourceDict.Contains(key))
+                        {
+                            var resource = resourceDict[key];
+                            if (resource is string stringValue)
+                                return stringValue;
+                        }
+                    }
+                }
+
+                return defaultValue ?? key;
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"加载默认资源失败：{ex.Message}");
-            }
-        }
-
-        // 移除外部资源
-        public static void UnregisterExternalResource(string assemblyName)
-        {
-            if (_externalResources.TryGetValue(assemblyName, out var info))
-            {
-                string path = string.Format(ExternalResourcePathTemplate, assemblyName, info.CurrentLanguage);
-                var dict = Application.Current.Resources.MergedDictionaries
-                    .FirstOrDefault(d => d.Source?.OriginalString == path);
-                if (dict != null)
-                {
-                    Application.Current.Resources.MergedDictionaries.Remove(dict);
-                }
-                _externalResources.Remove(assemblyName);
+                Debug.WriteLine($"Error getting localized string for key '{key}': {ex.Message}");
+                return defaultValue ?? key;
             }
         }
     }

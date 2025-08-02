@@ -4,4 +4,6 @@
     <FontFamily x:Key="JetBrainsMonoSemiBold">/TWPFX;component/Assets/Font/#JetBrains Mono SemiBold</FontFamily>
     <FontFamily x:Key="KingsoftCloud">/TWPFX;component/Assets/Font/#金山云技术体</FontFamily>
     <FontFamily x:Key="FZLanTingYuan">/TWPFX;component/Assets/Font/#方正兰亭圆简体_纤</FontFamily>
+    <FontFamily x:Key="Inter">/TWPFX;component/Assets/Font/#Inter</FontFamily>
+    <FontFamily x:Key="HelveticaNeue">/TWPFX;component/Assets/Font/#Helvetica Neue</FontFamily>
 </ResourceDictionary>

@@ -8,7 +8,7 @@
     xmlns:local="clr-namespace:TWPFX_Gallery.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:segoebutton="clr-namespace:TWPFX.Controls.Button.SegoeButton;assembly=TWPFX"
-    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" xmlns:lottiebutton="clr-namespace:TWPFX.Controls.Button.LottieButton;assembly=TWPFX" xmlns:tbutton="clr-namespace:TWPFX.Controls.Button.TButton;assembly=TWPFX"
     Title="DashboardPage"
     d:DataContext="{d:DesignInstance local:DashboardPage,
                                      IsDesignTimeCreatable=False}"
@@ -19,10 +19,13 @@
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
 
-    <Grid VerticalAlignment="Top">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-    </Grid>
+    <StackPanel>
+        <Button Click="Button_Click" Content="英文" />
+        <Button Click="Button_Click" Content="日文" />
+        <Button Click="Button_Click" Content="简体中文" />
+        <Button Click="Button_Click" Content="繁体中文" />
+        <Button Click="Button_Click" Content="韩语" />
+        <Button Click="Button_Click" Content="弹窗" />
+
+    </StackPanel>
 </Page>

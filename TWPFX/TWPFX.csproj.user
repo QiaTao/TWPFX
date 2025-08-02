@@ -5,9 +5,18 @@
     <Compile Update="Controls\Notification\InfoBar\TInfoBarControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\TextBlock\CodeBlock\TCodeBlock.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\Notification\InfoBar\TInfoBarControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\TextBlock\CodeBlock\TCodeBlock.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Resources\Langs\Lang.ko-KR.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Themes\Fonts.xaml">

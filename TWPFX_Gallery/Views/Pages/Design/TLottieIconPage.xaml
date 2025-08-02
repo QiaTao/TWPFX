@@ -1,0 +1,252 @@
+﻿<Page
+    x:Class="TWPFX_Gallery.Views.Pages.Design.TLottieIconPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:codeblock="clr-namespace:TWPFX.Controls.TextBlock.CodeBlock;assembly=TWPFX"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:TWPFX_Gallery.Views.Pages.Design"
+    xmlns:lottieicon="clr-namespace:TWPFX.Controls.Icon.LottieIcon;assembly=TWPFX"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:wpfui="clr-namespace:Wpf.Ui.Controls;assembly=Wpf.Ui"
+    Title="TLottieIconPage"
+    d:DataContext="{d:DesignInstance local:TLottieIconPage,
+                                     IsDesignTimeCreatable=False}"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBox
+                x:Name="searchTextBox"
+                Width="250"
+                Height="32"
+                VerticalContentAlignment="Center"
+                KeyDown="SearchTextBox_KeyDown"
+                Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}">
+                <TextBox.Style>
+                    <Style TargetType="TextBox">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="TextBox">
+                                    <Border
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}">
+                                        <Grid>
+                                            <TextBlock
+                                                Margin="5,0,0,0"
+                                                VerticalAlignment="Center"
+                                                Foreground="Gray"
+                                                IsHitTestVisible="False"
+                                                Text="{DynamicResource TLottieIcon_SearchBoxTips}">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="TextBlock">
+                                                        <Setter Property="Visibility" Value="Collapsed" />
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource AncestorType=TextBox}}" Value="">
+                                                                <Setter Property="Visibility" Value="Visible" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                            <ScrollViewer x:Name="PART_ContentHost" Margin="5,0,0,0" />
+                                        </Grid>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <ui:Button
+                x:Name="searchButton"
+                Margin="8,0,0,0"
+                Click="SearchButton_Click"
+                Content="{DynamicResource TLottieIcon_SearchButton}" />
+            <TextBlock
+                Margin="24,0,0,0"
+                VerticalAlignment="Center"
+                FontSize="13"
+                Text="{DynamicResource TLottieIcon_TextIconStyle}" />
+            <ComboBox
+                Margin="12,0,0,0"
+                SelectedValue="{Binding PStyle, Mode=TwoWay}"
+                SelectedValuePath="Content">
+                <ComboBoxItem Content="Regular" />
+                <ComboBoxItem Content="Solid" />
+            </ComboBox>
+            <TextBlock
+                Margin="24,0,0,0"
+                VerticalAlignment="Center"
+                FontSize="13"
+                Text="{DynamicResource TLottieIcon_TextAnimationMode}" />
+            <ComboBox
+                Margin="12,0,0,0"
+                SelectedValue="{Binding PAnimationMode, Mode=TwoWay}"
+                SelectedValuePath="Content">
+                <ComboBoxItem Content="OnHover" />
+                <ComboBoxItem Content="Always" />
+                <ComboBoxItem Content="Never" />
+            </ComboBox>
+        </StackPanel>
+        <Border
+            Margin="0,6,0,12"
+            Padding="10"
+            Background="{DynamicResource TAreaBackgroundDefault}"
+            BorderBrush="{DynamicResource TAreaBorderDefault}"
+            BorderThickness="1"
+            CornerRadius="8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <ScrollViewer
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Height="510"
+                    Background="Transparent"
+                    HorizontalScrollBarVisibility="Disabled"
+                    VerticalScrollBarVisibility="Auto">
+                    <ItemsControl x:Name="iconItemsControl" ItemsSource="{Binding FilteredIconItems}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <wpfui:VirtualizingWrapPanel Orientation="Vertical" VirtualizingPanel.ScrollUnit="Pixel" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                                    x:Name="border"
+                                    Width="96"
+                                    Height="96"
+                                    Margin="0,0,12,12"
+                                    Padding="6"
+                                    Background="{DynamicResource TCardBackgroundDefault}"
+                                    BorderBrush="{DynamicResource TCardBorderDefault}"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    MouseUp="IconItem_MouseUp">
+                                    <Border.Style>
+                                        <Style TargetType="Border">
+                                            <Setter Property="Background" Value="{DynamicResource TCardBackgroundDefault}" />
+                                            <Setter Property="BorderBrush" Value="{DynamicResource TCardBorderDefault}" />
+                                            <Setter Property="BorderThickness" Value="1" />
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter Property="Background" Value="{DynamicResource TCardBackgroundHover}" />
+                                                    <Setter Property="BorderBrush" Value="{DynamicResource TCardBorderHover}" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Border.Style>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+                                        <lottieicon:TLottieIcon
+                                            Grid.Row="0"
+                                            Width="36"
+                                            Height="36"
+                                            AnimationMode="{Binding DataContext.PAnimationMode, RelativeSource={RelativeSource AncestorType=Page}}"
+                                            IconStyle="{Binding DataContext.PStyle, RelativeSource={RelativeSource AncestorType=Page}}"
+                                            IconType="{Binding Type}" />
+                                        <TextBlock
+                                            Grid.Row="1"
+                                            FontSize="11"
+                                            Text="{Binding Type}"
+                                            TextAlignment="Center" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+                <StackPanel
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Width="160"
+                    Background="{DynamicResource TCardBackgroundDefault}">
+                    <lottieicon:TLottieIcon
+                        Width="61"
+                        Height="61"
+                        Margin="12"
+                        AnimationMode="{Binding SelectedItem.AnimationMode}"
+                        IconStyle="{Binding SelectedItem.Style}"
+                        IconType="{Binding SelectedItem.Type}" />
+                    <TextBlock
+                        Margin="18,36,18,0"
+                        HorizontalAlignment="Left"
+                        FontSize="11"
+                        Foreground="Gray"
+                        Text="{DynamicResource TLottieIcon_TextIconType}" />
+                    <TextBlock
+                        Margin="18,6,18,0"
+                        HorizontalAlignment="Left"
+                        FontSize="13"
+                        Text="{Binding SelectedItem.Type}" />
+                    <TextBlock
+                        Margin="18,36,18,0"
+                        HorizontalAlignment="Left"
+                        FontSize="11"
+                        Foreground="Gray"
+                        Text="{DynamicResource TLottieIcon_TextIconStyle}" />
+                    <TextBlock
+                        Margin="18,6,18,0"
+                        HorizontalAlignment="Left"
+                        FontSize="13"
+                        Text="{Binding SelectedItem.Style}" />
+                    <TextBlock
+                        Margin="18,36,18,0"
+                        HorizontalAlignment="Left"
+                        FontSize="11"
+                        Foreground="Gray"
+                        Text="{DynamicResource TLottieIcon_TextAnimationMode}" />
+                    <TextBlock
+                        Margin="18,6,18,0"
+                        HorizontalAlignment="Left"
+                        FontSize="13"
+                        Text="{Binding SelectedItem.AnimationMode}" />
+                </StackPanel>
+                <StackPanel
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2">
+                    <TextBlock
+                        Margin="6,12,6,0"
+                        HorizontalAlignment="Left"
+                        FontSize="11"
+                        Foreground="Gray"
+                        Text="XAML" />
+                    <codeblock:TCodeBlock
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="6,6,6,0"
+                        Code="{Binding XamlString}"
+                        Lang="XAML" />
+                    <TextBlock
+                        Margin="6,12,6,0"
+                        HorizontalAlignment="Left"
+                        FontSize="11"
+                        Foreground="Gray"
+                        Text="C#" />
+                    <codeblock:TCodeBlock
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Margin="6,6,6,0"
+                        Code="{Binding CSharpString}"
+                        Lang="C#" />
+                </StackPanel>
+            </Grid>
+        </Border>
+    </StackPanel>
+</Page>

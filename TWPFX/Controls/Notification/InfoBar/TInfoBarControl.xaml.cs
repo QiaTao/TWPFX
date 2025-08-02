@@ -120,6 +120,14 @@ namespace TWPFX.Controls.Notification.InfoBar
             get { return _action; }
             set { _action = value; OnPropertyChanged(nameof(Action)); }
         }
+
+        private bool _isShadowEnabled = false;
+        /// <summary> 是否显示阴影 </summary>
+        public bool IsShadowEnabled
+        {
+            get { return _isShadowEnabled; }
+            set { _isShadowEnabled = value; OnPropertyChanged(nameof(IsShadowEnabled)); }
+        }
         #endregion
 
         public event EventHandler<TInfoBarPosition> Closed;
