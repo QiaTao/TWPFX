@@ -1,5 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup Label="Globals">
+    <WebView2UseWinRT>False</WebView2UseWinRT>
+  </PropertyGroup>
+
   <PropertyGroup>
     <TargetFramework>net8.0-windows10.0.17763.0</TargetFramework>
     <Nullable>enable</Nullable>
@@ -9,40 +13,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Assets\Highlight\**" />
+    <EmbeddedResource Remove="Assets\Highlight\**" />
+    <None Remove="Assets\Highlight\**" />
+    <Page Remove="Assets\Highlight\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Assets\Font\FZLanTingYuanS-EL-GB.ttf" />
+    <None Remove="Assets\Font\Helvetica-Neue.ttf" />
+    <None Remove="Assets\Font\Hiragino Sans GB W3.otf" />
+    <None Remove="Assets\Font\Inter.ttf" />
     <None Remove="Assets\Font\JetBrainsMono-Regular.ttf" />
     <None Remove="Assets\Font\JetBrainsMono-SemiBold.ttf" />
     <None Remove="Assets\Font\金山云技术体.ttf" />
-    <None Remove="Assets\Highlight\highlight.js" />
-    <None Remove="Assets\Highlight\hightlight.html" />
-    <None Remove="Assets\Highlight\languages\c.js" />
-    <None Remove="Assets\Highlight\languages\c.min.js" />
-    <None Remove="Assets\Highlight\languages\cpp.js" />
-    <None Remove="Assets\Highlight\languages\cpp.min.js" />
-    <None Remove="Assets\Highlight\languages\csharp.js" />
-    <None Remove="Assets\Highlight\languages\csharp.min.js" />
-    <None Remove="Assets\Highlight\languages\css.js" />
-    <None Remove="Assets\Highlight\languages\css.min.js" />
-    <None Remove="Assets\Highlight\languages\javascript.js" />
-    <None Remove="Assets\Highlight\languages\javascript.min.js" />
-    <None Remove="Assets\Highlight\languages\json.js" />
-    <None Remove="Assets\Highlight\languages\json.min.js" />
-    <None Remove="Assets\Highlight\languages\python.js" />
-    <None Remove="Assets\Highlight\languages\python.min.js" />
-    <None Remove="Assets\Highlight\languages\xml.js" />
-    <None Remove="Assets\Highlight\languages\xml.min.js" />
-    <None Remove="Assets\Highlight\styles\androidstudio.css" />
-    <None Remove="Assets\Highlight\styles\dark.css" />
-    <None Remove="Assets\Highlight\styles\default.css" />
-    <None Remove="Assets\Highlight\styles\github.css" />
-    <None Remove="Assets\Highlight\styles\github_dark.css" />
-    <None Remove="Assets\Highlight\styles\googlecode.css" />
-    <None Remove="Assets\Highlight\styles\intellij_light.css" />
-    <None Remove="Assets\Highlight\styles\qtcreator_dark.css" />
-    <None Remove="Assets\Highlight\styles\qtcreator_light.css" />
-    <None Remove="Assets\Highlight\styles\stackoverflow_dark.css" />
-    <None Remove="Assets\Highlight\styles\stackoverflow_light.css" />
-    <None Remove="Assets\Highlight\styles\vs2015.css" />
     <None Remove="Assets\InfoBar\error.json" />
     <None Remove="Assets\InfoBar\info.json" />
     <None Remove="Assets\InfoBar\success.json" />
@@ -499,71 +483,12 @@
 
   <ItemGroup>
     <Resource Include="Assets\Font\FZLanTingYuanS-EL-GB.ttf" />
+    <Resource Include="Assets\Font\Helvetica-Neue.ttf" />
+    <Resource Include="Assets\Font\Hiragino Sans GB W3.otf" />
+    <Resource Include="Assets\Font\Inter.ttf" />
     <Resource Include="Assets\Font\JetBrainsMono-Regular.ttf" />
     <Resource Include="Assets\Font\JetBrainsMono-SemiBold.ttf" />
     <Resource Include="Assets\Font\金山云技术体.ttf" />
-    <Resource Include="Assets\Highlight\highlight.js" />
-    <Resource Include="Assets\Highlight\hightlight.html" />
-    <Resource Include="Assets\Highlight\languages\c.js">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Highlight\languages\c.min.js">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Highlight\languages\cpp.js">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Highlight\languages\cpp.min.js">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Highlight\languages\csharp.js">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Highlight\languages\csharp.min.js">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Highlight\languages\css.js">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Highlight\languages\css.min.js">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Highlight\languages\javascript.js">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Highlight\languages\javascript.min.js">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Highlight\languages\json.js">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Highlight\languages\json.min.js">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Highlight\languages\python.js">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Highlight\languages\python.min.js">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Highlight\languages\xml.js">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Highlight\languages\xml.min.js">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Highlight\styles\androidstudio.css" />
-    <Resource Include="Assets\Highlight\styles\dark.css" />
-    <Resource Include="Assets\Highlight\styles\default.css" />
-    <Resource Include="Assets\Highlight\styles\github.css" />
-    <Resource Include="Assets\Highlight\styles\github_dark.css" />
-    <Resource Include="Assets\Highlight\styles\googlecode.css" />
-    <Resource Include="Assets\Highlight\styles\intellij_light.css" />
-    <Resource Include="Assets\Highlight\styles\qtcreator_dark.css" />
-    <Resource Include="Assets\Highlight\styles\qtcreator_light.css" />
-    <Resource Include="Assets\Highlight\styles\stackoverflow_dark.css" />
-    <Resource Include="Assets\Highlight\styles\stackoverflow_light.css" />
-    <Resource Include="Assets\Highlight\styles\vs2015.css" />
     <Resource Include="Assets\InfoBar\error.json" />
     <Resource Include="Assets\InfoBar\info.json" />
     <Resource Include="Assets\InfoBar\success.json" />

@@ -1,0 +1,26 @@
+<Page
+    x:Class="TWPFX_Gallery.Views.Pages.Design.TControlExampleExpanderPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:example="clr-namespace:TWPFX.Controls.Example;assembly=TWPFX"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:tbutton="clr-namespace:TWPFX.Controls.Button.TButton;assembly=TWPFX"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    Title="TControlExampleExpander"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+
+    <StackPanel Margin="20">
+        <!--  示例1：按钮控件  -->
+        <example:TControlExampleExpander Code="&lt;TButton Content=&quot;点击我&quot; /&gt;" Header="TButton 按钮控件">
+            <tbutton:TIconButton Content="点击我" />
+        </example:TControlExampleExpander>
+
+        <example:TControlExampleExpander Code="&lt;TButton Content=&quot;点击我&quot; /&gt;" Header="TButton 按钮控件2" Margin="0,36,0,0">
+            <tbutton:TIconButton Content="点击我" />
+        </example:TControlExampleExpander>
+        
+    </StackPanel>
+</Page> 

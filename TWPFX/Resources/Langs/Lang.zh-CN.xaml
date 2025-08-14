@@ -1,0 +1,8 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <!--  Control  -->
+    <system:String x:Key="SourceCode">源代码</system:String>
+    <system:String x:Key="DisableExample">禁用示例</system:String>
+</ResourceDictionary>

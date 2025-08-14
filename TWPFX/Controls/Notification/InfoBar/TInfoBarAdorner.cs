@@ -34,10 +34,11 @@ namespace TWPFX.Controls.Notification.InfoBar
         /// <param name="severity">严重等级</param>
         /// <param name="position">显示位置</param>
         /// <param name="duration">显示持续时间</param>
+        /// <param name="isShadowEnabled">是否显示阴影</param>
         /// <param name="playMode">动画播放模式</param>
         /// <param name="action">可选的操作按钮</param>
         internal void Push(string title, string content, TInfoBarSeverity severity = TInfoBarSeverity.Success,
-            TInfoBarPosition position = TInfoBarPosition.TOP_RIGHT, int duration = 2000, TInfoBarPlayMode playMode = TInfoBarPlayMode.Once, ButtonBase? action = null)
+            TInfoBarPosition position = TInfoBarPosition.TOP_RIGHT, int duration = 2000, bool isShadowEnabled = false, TInfoBarPlayMode playMode = TInfoBarPlayMode.Once, ButtonBase? action = null)
         {
             if (!_panels.TryGetValue(position, out StackPanel? panel))
             {
@@ -54,6 +55,7 @@ namespace TWPFX.Controls.Notification.InfoBar
                 Duration = duration,
                 Severity = severity,
                 Position = position,
+                IsShadowEnabled = isShadowEnabled,
                 PlayMode = playMode,
                 Action = action
             };

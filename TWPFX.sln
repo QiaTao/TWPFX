@@ -5,7 +5,7 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWPFX", "TWPFX\TWPFX.csproj", "{B043E756-8331-49A8-A10B-90CFF01B4689}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWPFX_Gallery", "TWPFX_Gallery\TWPFX_Gallery.csproj", "{9D63B524-CA6F-4568-ABF3-D0EB6DB9AFD3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWPFX_Gallery", "TWPFX_Gallery\TWPFX_Gallery.csproj", "{9D63B524-CA6F-4568-ABF3-D0EB6DB9AFD3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

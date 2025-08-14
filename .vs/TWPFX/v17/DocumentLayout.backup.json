@@ -1,0 +1,202 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\TWPFX\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B043E756-8331-49A8-A10B-90CFF01B4689}|TWPFX\\TWPFX.csproj|d:\\twpfx\\twpfx\\controls\\button\\tbutton\\tbasebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B043E756-8331-49A8-A10B-90CFF01B4689}|TWPFX\\TWPFX.csproj|solutionrelative:twpfx\\controls\\button\\tbutton\\tbasebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B043E756-8331-49A8-A10B-90CFF01B4689}|TWPFX\\TWPFX.csproj|d:\\twpfx\\twpfx\\controls\\button\\tbutton\\tloadingbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B043E756-8331-49A8-A10B-90CFF01B4689}|TWPFX\\TWPFX.csproj|solutionrelative:twpfx\\controls\\button\\tbutton\\tloadingbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D63B524-CA6F-4568-ABF3-D0EB6DB9AFD3}|TWPFX_Gallery\\TWPFX_Gallery.csproj|d:\\twpfx\\twpfx_gallery\\views\\pages\\dashboardpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{9D63B524-CA6F-4568-ABF3-D0EB6DB9AFD3}|TWPFX_Gallery\\TWPFX_Gallery.csproj|solutionrelative:twpfx_gallery\\views\\pages\\dashboardpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D63B524-CA6F-4568-ABF3-D0EB6DB9AFD3}|TWPFX_Gallery\\TWPFX_Gallery.csproj|d:\\twpfx\\twpfx_gallery\\views\\pages\\basicinput\\tbuttonpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{9D63B524-CA6F-4568-ABF3-D0EB6DB9AFD3}|TWPFX_Gallery\\TWPFX_Gallery.csproj|solutionrelative:twpfx_gallery\\views\\pages\\basicinput\\tbuttonpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D63B524-CA6F-4568-ABF3-D0EB6DB9AFD3}|TWPFX_Gallery\\TWPFX_Gallery.csproj|d:\\twpfx\\twpfx_gallery\\views\\pages\\design\\tcolorpalettepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{9D63B524-CA6F-4568-ABF3-D0EB6DB9AFD3}|TWPFX_Gallery\\TWPFX_Gallery.csproj|solutionrelative:twpfx_gallery\\views\\pages\\design\\tcolorpalettepage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B043E756-8331-49A8-A10B-90CFF01B4689}|TWPFX\\TWPFX.csproj|d:\\twpfx\\twpfx\\controls\\notification\\loading\\tloading.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B043E756-8331-49A8-A10B-90CFF01B4689}|TWPFX\\TWPFX.csproj|solutionrelative:twpfx\\controls\\notification\\loading\\tloading.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D63B524-CA6F-4568-ABF3-D0EB6DB9AFD3}|TWPFX_Gallery\\TWPFX_Gallery.csproj|d:\\twpfx\\twpfx_gallery\\controls\\design\\tcolorpalettecardviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D63B524-CA6F-4568-ABF3-D0EB6DB9AFD3}|TWPFX_Gallery\\TWPFX_Gallery.csproj|solutionrelative:twpfx_gallery\\controls\\design\\tcolorpalettecardviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D63B524-CA6F-4568-ABF3-D0EB6DB9AFD3}|TWPFX_Gallery\\TWPFX_Gallery.csproj|d:\\twpfx\\twpfx_gallery\\controls\\design\\tcolorpalettecard.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{9D63B524-CA6F-4568-ABF3-D0EB6DB9AFD3}|TWPFX_Gallery\\TWPFX_Gallery.csproj|solutionrelative:twpfx_gallery\\controls\\design\\tcolorpalettecard.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D63B524-CA6F-4568-ABF3-D0EB6DB9AFD3}|TWPFX_Gallery\\TWPFX_Gallery.csproj|d:\\twpfx\\twpfx_gallery\\views\\pages\\design\\tsegoeiconpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D63B524-CA6F-4568-ABF3-D0EB6DB9AFD3}|TWPFX_Gallery\\TWPFX_Gallery.csproj|solutionrelative:twpfx_gallery\\views\\pages\\design\\tsegoeiconpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D63B524-CA6F-4568-ABF3-D0EB6DB9AFD3}|TWPFX_Gallery\\TWPFX_Gallery.csproj|d:\\twpfx\\twpfx_gallery\\controls\\design\\tcolorpalettecard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{9D63B524-CA6F-4568-ABF3-D0EB6DB9AFD3}|TWPFX_Gallery\\TWPFX_Gallery.csproj|solutionrelative:twpfx_gallery\\controls\\design\\tcolorpalettecard.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B043E756-8331-49A8-A10B-90CFF01B4689}|TWPFX\\TWPFX.csproj|d:\\twpfx\\twpfx\\service\\tthemeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B043E756-8331-49A8-A10B-90CFF01B4689}|TWPFX\\TWPFX.csproj|solutionrelative:twpfx\\service\\tthemeservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DashboardPage.xaml",
+              "DocumentMoniker": "D:\\TWPFX\\TWPFX_Gallery\\Views\\Pages\\DashboardPage.xaml",
+              "RelativeDocumentMoniker": "TWPFX_Gallery\\Views\\Pages\\DashboardPage.xaml",
+              "ToolTip": "D:\\TWPFX\\TWPFX_Gallery\\Views\\Pages\\DashboardPage.xaml",
+              "RelativeToolTip": "TWPFX_Gallery\\Views\\Pages\\DashboardPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-13T09:53:07.152Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TLoadingButton.cs",
+              "DocumentMoniker": "D:\\TWPFX\\TWPFX\\Controls\\Button\\TButton\\TLoadingButton.cs",
+              "RelativeDocumentMoniker": "TWPFX\\Controls\\Button\\TButton\\TLoadingButton.cs",
+              "ToolTip": "D:\\TWPFX\\TWPFX\\Controls\\Button\\TButton\\TLoadingButton.cs",
+              "RelativeToolTip": "TWPFX\\Controls\\Button\\TButton\\TLoadingButton.cs",
+              "ViewState": "AgIAAP8AAAAAAAAAAAAowA0BAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-13T08:39:29.394Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TBaseButton.cs",
+              "DocumentMoniker": "D:\\TWPFX\\TWPFX\\Controls\\Button\\TButton\\TBaseButton.cs",
+              "RelativeDocumentMoniker": "TWPFX\\Controls\\Button\\TButton\\TBaseButton.cs",
+              "ToolTip": "D:\\TWPFX\\TWPFX\\Controls\\Button\\TButton\\TBaseButton.cs*",
+              "RelativeToolTip": "TWPFX\\Controls\\Button\\TButton\\TBaseButton.cs*",
+              "ViewState": "AgIAAHMAAAAAAAAAAAD4vyIBAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-13T08:37:28.821Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TButtonPage.xaml",
+              "DocumentMoniker": "D:\\TWPFX\\TWPFX_Gallery\\Views\\Pages\\BasicInput\\TButtonPage.xaml",
+              "RelativeDocumentMoniker": "TWPFX_Gallery\\Views\\Pages\\BasicInput\\TButtonPage.xaml",
+              "ToolTip": "D:\\TWPFX\\TWPFX_Gallery\\Views\\Pages\\BasicInput\\TButtonPage.xaml",
+              "RelativeToolTip": "TWPFX_Gallery\\Views\\Pages\\BasicInput\\TButtonPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-13T08:28:31.634Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TLoading.cs",
+              "DocumentMoniker": "D:\\TWPFX\\TWPFX\\Controls\\Notification\\Loading\\TLoading.cs",
+              "RelativeDocumentMoniker": "TWPFX\\Controls\\Notification\\Loading\\TLoading.cs",
+              "ToolTip": "D:\\TWPFX\\TWPFX\\Controls\\Notification\\Loading\\TLoading.cs",
+              "RelativeToolTip": "TWPFX\\Controls\\Notification\\Loading\\TLoading.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAD4vxQAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-13T06:58:16.409Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "TSegoeIconPage.xaml.cs",
+              "DocumentMoniker": "D:\\TWPFX\\TWPFX_Gallery\\Views\\Pages\\Design\\TSegoeIconPage.xaml.cs",
+              "RelativeDocumentMoniker": "TWPFX_Gallery\\Views\\Pages\\Design\\TSegoeIconPage.xaml.cs",
+              "ToolTip": "D:\\TWPFX\\TWPFX_Gallery\\Views\\Pages\\Design\\TSegoeIconPage.xaml.cs",
+              "RelativeToolTip": "TWPFX_Gallery\\Views\\Pages\\Design\\TSegoeIconPage.xaml.cs",
+              "ViewState": "AgIAAG4AAAAAAAAAAAAAAIcAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-13T06:58:08.196Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TColorPalettePage.xaml",
+              "DocumentMoniker": "D:\\TWPFX\\TWPFX_Gallery\\Views\\Pages\\Design\\TColorPalettePage.xaml",
+              "RelativeDocumentMoniker": "TWPFX_Gallery\\Views\\Pages\\Design\\TColorPalettePage.xaml",
+              "ToolTip": "D:\\TWPFX\\TWPFX_Gallery\\Views\\Pages\\Design\\TColorPalettePage.xaml",
+              "RelativeToolTip": "TWPFX_Gallery\\Views\\Pages\\Design\\TColorPalettePage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-07T08:09:22.265Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "TThemeService.cs",
+              "DocumentMoniker": "D:\\TWPFX\\TWPFX\\Service\\TThemeService.cs",
+              "RelativeDocumentMoniker": "TWPFX\\Service\\TThemeService.cs",
+              "ToolTip": "D:\\TWPFX\\TWPFX\\Service\\TThemeService.cs",
+              "RelativeToolTip": "TWPFX\\Service\\TThemeService.cs",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAuwFsAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T03:31:08.47Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TColorPaletteCard.xaml.cs",
+              "DocumentMoniker": "D:\\TWPFX\\TWPFX_Gallery\\Controls\\Design\\TColorPaletteCard.xaml.cs",
+              "RelativeDocumentMoniker": "TWPFX_Gallery\\Controls\\Design\\TColorPaletteCard.xaml.cs",
+              "ToolTip": "D:\\TWPFX\\TWPFX_Gallery\\Controls\\Design\\TColorPaletteCard.xaml.cs",
+              "RelativeToolTip": "TWPFX_Gallery\\Controls\\Design\\TColorPaletteCard.xaml.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAiwCoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T02:48:20.482Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TColorPaletteCardViewModel.cs",
+              "DocumentMoniker": "D:\\TWPFX\\TWPFX_Gallery\\Controls\\Design\\TColorPaletteCardViewModel.cs",
+              "RelativeDocumentMoniker": "TWPFX_Gallery\\Controls\\Design\\TColorPaletteCardViewModel.cs",
+              "ToolTip": "D:\\TWPFX\\TWPFX_Gallery\\Controls\\Design\\TColorPaletteCardViewModel.cs",
+              "RelativeToolTip": "TWPFX_Gallery\\Controls\\Design\\TColorPaletteCardViewModel.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAuwEsAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-06T02:47:43.93Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TColorPaletteCard.xaml",
+              "DocumentMoniker": "D:\\TWPFX\\TWPFX_Gallery\\Controls\\Design\\TColorPaletteCard.xaml",
+              "RelativeDocumentMoniker": "TWPFX_Gallery\\Controls\\Design\\TColorPaletteCard.xaml",
+              "ToolTip": "D:\\TWPFX\\TWPFX_Gallery\\Controls\\Design\\TColorPaletteCard.xaml",
+              "RelativeToolTip": "TWPFX_Gallery\\Controls\\Design\\TColorPaletteCard.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-08-06T02:44:25.517Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

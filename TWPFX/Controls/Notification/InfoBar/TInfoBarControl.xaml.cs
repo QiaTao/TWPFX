@@ -120,6 +120,14 @@ namespace TWPFX.Controls.Notification.InfoBar
             get { return _action; }
             set { _action = value; OnPropertyChanged(nameof(Action)); }
         }
+
+        private bool _isShadowEnabled = false;
+        /// <summary> 是否显示阴影 </summary>
+        public bool IsShadowEnabled
+        {
+            get { return _isShadowEnabled; }
+            set { _isShadowEnabled = value; OnPropertyChanged(nameof(IsShadowEnabled)); }
+        }
         #endregion
 
         public event EventHandler<TInfoBarPosition> Closed;
@@ -292,7 +300,7 @@ namespace TWPFX.Controls.Notification.InfoBar
             }
             if (propertyName == nameof(InfoContent))
             {
-                if (GetStringWidth(InfoContent) > 16)
+                if (GetStringWidth(InfoContent + Title) > 31)
                 {
                     Orientation = "Vertical";
                     textBlock_content.Margin = new Thickness(0, 0, 0, 6);
@@ -301,7 +309,7 @@ namespace TWPFX.Controls.Notification.InfoBar
                 {
                     Orientation = "Horizontal";
                 }
-                Orientation = GetStringWidth(InfoContent) > 16 ? "Vertical" : "Horizontal";
+                Orientation = GetStringWidth(InfoContent + Title) > 31 ? "Vertical" : "Horizontal";
             }
             if (propertyName == nameof(Action))
             {

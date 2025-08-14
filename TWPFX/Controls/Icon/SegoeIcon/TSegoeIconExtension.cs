@@ -15,10 +15,20 @@ namespace TWPFX.Controls.Icon.SegoeIcon
         /// </summary>
         public static string GetDescription(this TSegoeIconType icon)
         {
-            var field = icon.GetType().GetField(icon.ToString());
-            var attribute = field.GetCustomAttributes(typeof(DescriptionAttribute), false)
-                              .FirstOrDefault() as DescriptionAttribute;
-            return attribute?.Description ?? icon.ToString();
+            try
+            {
+                var field = icon.GetType().GetField(icon.ToString());
+                if (field == null)
+                    return icon.ToString();
+                    
+                var attribute = field.GetCustomAttributes(typeof(DescriptionAttribute), false)
+                                  .FirstOrDefault() as DescriptionAttribute;
+                return attribute?.Description ?? icon.ToString();
+            }
+            catch
+            {
+                return icon.ToString();
+            }
         }
 
         /// <summary>

@@ -8,7 +8,7 @@
     xmlns:local="clr-namespace:TWPFX_Gallery.Views.Pages"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:segoebutton="clr-namespace:TWPFX.Controls.Button.SegoeButton;assembly=TWPFX"
-    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml" xmlns:lottiebutton="clr-namespace:TWPFX.Controls.Button.LottieButton;assembly=TWPFX" xmlns:tbutton="clr-namespace:TWPFX.Controls.Button.TButton;assembly=TWPFX"
     Title="DashboardPage"
     d:DataContext="{d:DesignInstance local:DashboardPage,
                                      IsDesignTimeCreatable=False}"
@@ -19,43 +19,14 @@
     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
 
-    <Grid Height="140" VerticalAlignment="Top">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
-
-        <TextBlock
-            Grid.Column="0"
-            HorizontalAlignment="Center"
-            FontFamily="SimHei"
-            FontSize="13"
-            Text="常见原因及解决方案Te0o"
-            TextOptions.TextFormattingMode="Display"
-            TextOptions.TextHintingMode="Fixed"
-            TextOptions.TextRenderingMode="ClearType"
-            UseLayoutRounding="True" />
-        <StackPanel Grid.Column="1" Orientation="Horizontal">
-            <codeblock:TCodeBlock
-                Width="320"
-                Height="460"
-                Margin="12,0,0,0"
-                Code="import re21212"
-                CodeStyle="Stackoverflow_Dark" />
-            <segoebutton:TSegoeButton
-                x:Name="button"
-                Width="31"
-                Height="31"
-                Clicked="button_Clicked"
-                Cursor="Hand"
-                Glyph="Copy"
-                GlyphSize="16" />
-        </StackPanel>
-        <TextBlock
-            Grid.Column="2"
-            Margin="12,0,0,0"
-            VerticalAlignment="Center"
-            Text="{Binding ViewModel.Counter, Mode=OneWay}" />
-    </Grid>
+    <StackPanel>
+        <TextBlock Text="系统色" FontFamily="Microsoft YaHei"/>
+        <Button Click="Button_Click" Content="英文" />
+        <Button Click="Button_Click" Content="日文" />
+        <Button Click="Button_Click" Content="简体中文" />
+        <Button Click="Button_Click" Content="繁体中文" />
+        <Button Click="Button_Click" Content="韩语" />
+        <Button Click="Button_Click" Content="弹窗" />
+        <tbutton:TIconButton Icon="Delete" Text="删除" BorderPadding="8,0,0,0"/>
+    </StackPanel>
 </Page>

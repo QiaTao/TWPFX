@@ -1,4 +1,13 @@
-﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:icon="clr-namespace:TWPFX.Controls.Icon.SegoeIcon;assembly=TWPFX">
+
+    <!-- 合并 TButton 模板 -->
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="TBaseButton.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+
     <!--  按钮控件专用色  -->
     <SolidColorBrush x:Key="TButtonBackgroundDefault" Color="#ffffff" />
     <SolidColorBrush x:Key="TButtonBackgroundHover" Color="#f6f6f6" />
@@ -28,4 +37,5 @@
     <SolidColorBrush x:Key="TWarningBackground" Color="#433519" />
     <SolidColorBrush x:Key="TErrorBackground" Color="#442726" />
     <SolidColorBrush x:Key="TNeutralBackground" Color="#2E2E2E" />
+
 </ResourceDictionary>

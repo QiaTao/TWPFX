@@ -1,0 +1,93 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:base="clr-namespace:TWPFX.Controls.Button.TButton"
+    xmlns:helpers="clr-namespace:TWPFX.Helpers">
+
+    <!--  转换器  -->
+    <helpers:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+    <helpers:DoubleToThicknessConverter x:Key="DoubleToThicknessConverter" />
+    <helpers:DoubleToCornerRadiusConverter x:Key="DoubleToCornerRadiusConverter" />
+
+    <!--  基础按钮模板  -->
+    <ControlTemplate x:Key="TBaseButtonTemplate" TargetType="base:TBaseButton">
+        <!--  背景和内容  -->
+        <Border
+            x:Name="border"
+            Padding="{TemplateBinding BorderPadding}"
+            Background="{TemplateBinding BackgroundColor}"
+            BorderBrush="{TemplateBinding BorderColor}"
+            BorderThickness="{TemplateBinding BorderThickness,
+                                              Converter={StaticResource DoubleToThicknessConverter}}"
+            CornerRadius="{TemplateBinding CornerRadius,
+                                           Converter={StaticResource DoubleToCornerRadiusConverter}}"
+            Cursor="Hand"
+            RenderOptions.BitmapScalingMode="HighQuality"
+            RenderOptions.ClearTypeHint="Enabled"
+            RenderOptions.EdgeMode="Unspecified"
+            SnapsToDevicePixels="True"
+            UseLayoutRounding="True">
+            <Grid x:Name="contentPanel">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!--  左侧内容区域  -->
+                <ContentPresenter
+                    x:Name="leftContent"
+                    Grid.Column="0"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="{TemplateBinding Content}"
+                    RenderOptions.BitmapScalingMode="HighQuality"
+                    RenderOptions.EdgeMode="Unspecified"
+                    UseLayoutRounding="True"
+                    Visibility="{Binding Content, RelativeSource={RelativeSource TemplatedParent}, Converter={StaticResource NullToVisibilityConverter}}" />
+
+                <!--  文本区域  -->
+                <TextBlock
+                    x:Name="textElement"
+                    Grid.Column="1"
+                    HorizontalAlignment="{TemplateBinding TextAlignment}"
+                    VerticalAlignment="Center"
+                    FontSize="{TemplateBinding FontSize}"
+                    FontWeight="{TemplateBinding FontWeight}"
+                    Foreground="{TemplateBinding TextColor}"
+                    RenderOptions.BitmapScalingMode="HighQuality"
+                    RenderOptions.ClearTypeHint="Enabled"
+                    RenderOptions.EdgeMode="Unspecified"
+                    Text="{TemplateBinding Text}"
+                    TextOptions.TextFormattingMode="Display"
+                    TextOptions.TextRenderingMode="ClearType"
+                    UseLayoutRounding="True"/>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="border" Property="Background" Value="{Binding HoverBackgroundColor, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Setter TargetName="border" Property="BorderBrush" Value="{Binding HoverBorderColor, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Setter TargetName="textElement" Property="Foreground" Value="{Binding HoverTextColor, RelativeSource={RelativeSource TemplatedParent}}" />
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter TargetName="border" Property="Background" Value="{Binding PressedBackgroundColor, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Setter TargetName="border" Property="BorderBrush" Value="{Binding PressedBorderColor, RelativeSource={RelativeSource TemplatedParent}}" />
+                <Setter TargetName="textElement" Property="Foreground" Value="{Binding PressedTextColor, RelativeSource={RelativeSource TemplatedParent}}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="border" Property="Opacity" Value="0.6" />
+                <Setter TargetName="textElement" Property="Opacity" Value="0.7" />
+            </Trigger>
+            <!--  ContentOrder触发器  -->
+            <Trigger Property="ContentOrder" Value="TextFirst">
+                <Setter TargetName="textElement" Property="Grid.Column" Value="0" />
+                <Setter TargetName="leftContent" Property="Grid.Column" Value="1" />
+            </Trigger>
+            <Trigger Property="ContentOrder" Value="ContentFirst">
+                <Setter TargetName="leftContent" Property="Grid.Column" Value="0" />
+                <Setter TargetName="textElement" Property="Grid.Column" Value="1" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+</ResourceDictionary>

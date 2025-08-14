@@ -1,0 +1,742 @@
+<Page
+    x:Class="TWPFX_Gallery.Views.Pages.BasicInput.TButtonPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:example="clr-namespace:TWPFX.Controls.Example;assembly=TWPFX"
+    xmlns:local="clr-namespace:TWPFX_Gallery.Views.Pages.BasicInput"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:segoeicon="clr-namespace:TWPFX.Controls.Icon.SegoeIcon;assembly=TWPFX"
+    xmlns:tbutton="clr-namespace:TWPFX.Controls.Button.TButton;assembly=TWPFX"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:viewmodels="clr-namespace:TWPFX_Gallery.ViewModels.Pages.BasicInput"
+    Title="TButton"
+    d:DataContext="{d:DesignInstance local:TButtonPage,
+                                     IsDesignTimeCreatable=False}"
+    mc:Ignorable="d">
+
+    <StackPanel Margin="0,0,0,36">
+        <example:TControlExampleExpander
+            Margin="0,24,0,0"
+            Code="{Binding ViewModel.TBaseButtonCode}"
+            Header="{DynamicResource TButton_TextTBaseButton}"
+            Lang="XAML">
+            <tbutton:TBaseButton
+                Width="91"
+                Height="36"
+                BackgroundColor="#21222d"
+                BorderColor="#eaeaea"
+                Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                CornerRadius="6"
+                FontSize="14"
+                FontWeight="Bold"
+                HoverBackgroundColor="#373842"
+                HoverBorderColor="#eaeaea"
+                HoverTextColor="#eaeaeb"
+                PressedBackgroundColor="#73747b"
+                PressedBorderColor="#eaeaea"
+                PressedTextColor="#eaeaeb"
+                Text="{DynamicResource TButton_TextButton}"
+                TextAlignment="Center"
+                TextColor="#ffffff" />
+        </example:TControlExampleExpander>
+
+        <example:TControlExampleExpander
+            Margin="0,24,0,0"
+            Code="{Binding ViewModel.TThemeButtonCode}"
+            Header="{DynamicResource TButton_TextTThemeButton}"
+            Lang="XAML">
+            <StackPanel>
+                <TextBlock
+                    FontSize="13"
+                    FontWeight="Bold"
+                    Text="{DynamicResource TButton_TextSolid}" />
+                <WrapPanel Margin="0,6,0,0" Orientation="Horizontal">
+                    <tbutton:TThemeButton
+                        Width="91"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Default"
+                        ButtonStyle="Solid"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{DynamicResource TButton_TextDefault}"
+                        TextAlignment="Center" />
+                    <tbutton:TThemeButton
+                        Width="91"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="System"
+                        ButtonStyle="Solid"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{DynamicResource TButton_TextSystem}"
+                        TextAlignment="Center" />
+                    <tbutton:TThemeButton
+                        Width="91"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Primary"
+                        ButtonStyle="Solid"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{DynamicResource TButton_TextPrimary}"
+                        TextAlignment="Center" />
+                    <tbutton:TThemeButton
+                        Width="91"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Info"
+                        ButtonStyle="Solid"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{DynamicResource TButton_TextInfo}"
+                        TextAlignment="Center" />
+                    <tbutton:TThemeButton
+                        Width="91"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Success"
+                        ButtonStyle="Solid"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{DynamicResource TButton_TextSuccess}"
+                        TextAlignment="Center" />
+                    <tbutton:TThemeButton
+                        Width="91"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Warning"
+                        ButtonStyle="Solid"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{DynamicResource TButton_TextWarning}"
+                        TextAlignment="Center" />
+                    <tbutton:TThemeButton
+                        Width="91"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Danger"
+                        ButtonStyle="Solid"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{DynamicResource TButton_TextDanger}"
+                        TextAlignment="Center" />
+                </WrapPanel>
+                <TextBlock
+                    Margin="0,12,0,0"
+                    FontSize="13"
+                    FontWeight="Bold"
+                    Text="{DynamicResource TButton_TextOutlined}" />
+                <WrapPanel Margin="0,6,0,0" Orientation="Horizontal">
+                    <tbutton:TThemeButton
+                        Width="91"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Default"
+                        ButtonStyle="Outlined"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{DynamicResource TButton_TextDefault}"
+                        TextAlignment="Center" />
+                    <tbutton:TThemeButton
+                        Width="91"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="System"
+                        ButtonStyle="Outlined"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{DynamicResource TButton_TextSystem}"
+                        TextAlignment="Center" />
+                    <tbutton:TThemeButton
+                        Width="91"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Primary"
+                        ButtonStyle="Outlined"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{DynamicResource TButton_TextPrimary}"
+                        TextAlignment="Center" />
+                    <tbutton:TThemeButton
+                        Width="91"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Info"
+                        ButtonStyle="Outlined"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{DynamicResource TButton_TextInfo}"
+                        TextAlignment="Center" />
+                    <tbutton:TThemeButton
+                        Width="91"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Success"
+                        ButtonStyle="Outlined"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{DynamicResource TButton_TextSuccess}"
+                        TextAlignment="Center" />
+                    <tbutton:TThemeButton
+                        Width="91"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Warning"
+                        ButtonStyle="Outlined"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{DynamicResource TButton_TextWarning}"
+                        TextAlignment="Center" />
+                    <tbutton:TThemeButton
+                        Width="91"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Danger"
+                        ButtonStyle="Outlined"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{DynamicResource TButton_TextDanger}"
+                        TextAlignment="Center" />
+                </WrapPanel>
+                <TextBlock
+                    Margin="0,12,0,0"
+                    FontSize="13"
+                    FontWeight="Bold"
+                    Text="{DynamicResource TButton_TextFilled}" />
+                <WrapPanel Margin="0,6,0,0" Orientation="Horizontal">
+                    <tbutton:TThemeButton
+                        Width="91"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Default"
+                        ButtonStyle="Filled"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{DynamicResource TButton_TextDefault}"
+                        TextAlignment="Center" />
+                    <tbutton:TThemeButton
+                        Width="91"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="System"
+                        ButtonStyle="Filled"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{DynamicResource TButton_TextSystem}"
+                        TextAlignment="Center" />
+                    <tbutton:TThemeButton
+                        Width="91"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Primary"
+                        ButtonStyle="Filled"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{DynamicResource TButton_TextPrimary}"
+                        TextAlignment="Center" />
+                    <tbutton:TThemeButton
+                        Width="91"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Info"
+                        ButtonStyle="Filled"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{DynamicResource TButton_TextInfo}"
+                        TextAlignment="Center" />
+                    <tbutton:TThemeButton
+                        Width="91"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Success"
+                        ButtonStyle="Filled"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{DynamicResource TButton_TextSuccess}"
+                        TextAlignment="Center" />
+                    <tbutton:TThemeButton
+                        Width="91"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Warning"
+                        ButtonStyle="Filled"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{DynamicResource TButton_TextWarning}"
+                        TextAlignment="Center" />
+                    <tbutton:TThemeButton
+                        Width="91"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Danger"
+                        ButtonStyle="Filled"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Text="{DynamicResource TButton_TextDanger}"
+                        TextAlignment="Center" />
+                </WrapPanel>
+            </StackPanel>
+        </example:TControlExampleExpander>
+
+        <example:TControlExampleExpander
+            Margin="0,24,0,0"
+            Code="{Binding ViewModel.TIconButtonCode}"
+            Header="{DynamicResource TButton_TextTIconButton}"
+            Lang="XAML">
+            <StackPanel>
+                <TextBlock
+                    FontSize="13"
+                    FontWeight="Bold"
+                    Text="{DynamicResource TButton_TextSolid}" />
+                <WrapPanel Margin="0,6,0,0" Orientation="Horizontal">
+                    <tbutton:TIconButton
+                        Width="116"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Default"
+                        BorderPadding="18,0"
+                        ButtonStyle="Solid"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Icon="HeartFill"
+                        Text="{DynamicResource TButton_TextDefault}"
+                        TextAlignment="Center" />
+                    <tbutton:TIconButton
+                        Width="116"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="System"
+                        BorderPadding="18,0"
+                        ButtonStyle="Solid"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Icon="HeartFill"
+                        Text="{DynamicResource TButton_TextSystem}"
+                        TextAlignment="Center" />
+                    <tbutton:TIconButton
+                        Width="116"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Primary"
+                        BorderPadding="18,0"
+                        ButtonStyle="Solid"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Icon="HeartFill"
+                        Text="{DynamicResource TButton_TextPrimary}"
+                        TextAlignment="Center" />
+                    <tbutton:TIconButton
+                        Width="116"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Info"
+                        BorderPadding="18,0"
+                        ButtonStyle="Solid"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Icon="HeartFill"
+                        Text="{DynamicResource TButton_TextInfo}"
+                        TextAlignment="Center" />
+                    <tbutton:TIconButton
+                        Width="116"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Success"
+                        BorderPadding="18,0"
+                        ButtonStyle="Solid"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Icon="HeartFill"
+                        Text="{DynamicResource TButton_TextSuccess}"
+                        TextAlignment="Center" />
+                    <tbutton:TIconButton
+                        Width="121"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Warning"
+                        BorderPadding="18,0"
+                        ButtonStyle="Solid"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Icon="HeartFill"
+                        Text="{DynamicResource TButton_TextWarning}"
+                        TextAlignment="Center" />
+                    <tbutton:TIconButton
+                        Width="116"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Danger"
+                        BorderPadding="18,0"
+                        ButtonStyle="Solid"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Icon="HeartFill"
+                        Text="{DynamicResource TButton_TextDanger}"
+                        TextAlignment="Center" />
+                </WrapPanel>
+                <TextBlock
+                    Margin="0,12,0,0"
+                    FontSize="13"
+                    FontWeight="Bold"
+                    Text="{DynamicResource TButton_TextOutlined}" />
+                <WrapPanel Margin="0,6,0,0" Orientation="Horizontal">
+                    <tbutton:TIconButton
+                        Width="116"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Default"
+                        BorderPadding="18,0"
+                        ButtonStyle="Outlined"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Icon="HeartFill"
+                        Text="{DynamicResource TButton_TextDefault}"
+                        TextAlignment="Center" />
+                    <tbutton:TIconButton
+                        Width="116"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="System"
+                        BorderPadding="18,0"
+                        ButtonStyle="Outlined"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Icon="HeartFill"
+                        Text="{DynamicResource TButton_TextSystem}"
+                        TextAlignment="Center" />
+                    <tbutton:TIconButton
+                        Width="116"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Primary"
+                        BorderPadding="18,0"
+                        ButtonStyle="Outlined"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Icon="HeartFill"
+                        Text="{DynamicResource TButton_TextPrimary}"
+                        TextAlignment="Center" />
+                    <tbutton:TIconButton
+                        Width="116"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Info"
+                        BorderPadding="18,0"
+                        ButtonStyle="Outlined"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Icon="HeartFill"
+                        Text="{DynamicResource TButton_TextInfo}"
+                        TextAlignment="Center" />
+                    <tbutton:TIconButton
+                        Width="116"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Success"
+                        BorderPadding="18,0"
+                        ButtonStyle="Outlined"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Icon="HeartFill"
+                        Text="{DynamicResource TButton_TextSuccess}"
+                        TextAlignment="Center" />
+                    <tbutton:TIconButton
+                        Width="121"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Warning"
+                        BorderPadding="18,0"
+                        ButtonStyle="Outlined"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Icon="HeartFill"
+                        Text="{DynamicResource TButton_TextWarning}"
+                        TextAlignment="Center" />
+                    <tbutton:TIconButton
+                        Width="116"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Danger"
+                        BorderPadding="18,0"
+                        ButtonStyle="Outlined"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Icon="HeartFill"
+                        Text="{DynamicResource TButton_TextDanger}"
+                        TextAlignment="Center" />
+                </WrapPanel>
+                <TextBlock
+                    Margin="0,12,0,0"
+                    FontSize="13"
+                    FontWeight="Bold"
+                    Text="{DynamicResource TButton_TextFilled}" />
+                <WrapPanel Margin="0,6,0,0" Orientation="Horizontal">
+                    <tbutton:TIconButton
+                        Width="116"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Default"
+                        BorderPadding="18,0"
+                        ButtonStyle="Filled"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Icon="HeartFill"
+                        Text="{DynamicResource TButton_TextDefault}"
+                        TextAlignment="Center" />
+                    <tbutton:TIconButton
+                        Width="116"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="System"
+                        BorderPadding="18,0"
+                        ButtonStyle="Filled"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Icon="HeartFill"
+                        Text="{DynamicResource TButton_TextSystem}"
+                        TextAlignment="Center" />
+                    <tbutton:TIconButton
+                        Width="116"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Primary"
+                        BorderPadding="18,0"
+                        ButtonStyle="Filled"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Icon="HeartFill"
+                        Text="{DynamicResource TButton_TextPrimary}"
+                        TextAlignment="Center" />
+                    <tbutton:TIconButton
+                        Width="116"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Info"
+                        BorderPadding="18,0"
+                        ButtonStyle="Filled"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Icon="HeartFill"
+                        Text="{DynamicResource TButton_TextInfo}"
+                        TextAlignment="Center" />
+                    <tbutton:TIconButton
+                        Width="116"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Success"
+                        BorderPadding="18,0"
+                        ButtonStyle="Filled"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Icon="HeartFill"
+                        Text="{DynamicResource TButton_TextSuccess}"
+                        TextAlignment="Center" />
+                    <tbutton:TIconButton
+                        Width="121"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Warning"
+                        BorderPadding="18,0"
+                        ButtonStyle="Filled"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Icon="HeartFill"
+                        Text="{DynamicResource TButton_TextWarning}"
+                        TextAlignment="Center" />
+                    <tbutton:TIconButton
+                        Width="116"
+                        Height="36"
+                        Margin="0,0,24,12"
+                        Appearance="Danger"
+                        BorderPadding="18,0"
+                        ButtonStyle="Filled"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Icon="HeartFill"
+                        Text="{DynamicResource TButton_TextDanger}"
+                        TextAlignment="Center" />
+                </WrapPanel>
+                <TextBlock
+                    Margin="0,12,0,0"
+                    FontSize="13"
+                    FontWeight="Bold"
+                    Text="{DynamicResource TButton_TextCircle}" />
+                <WrapPanel Margin="0,6,0,0" Orientation="Horizontal">
+                    <tbutton:TIconButton
+                        Width="31"
+                        Height="31"
+                        Margin="0,0,24,12"
+                        Appearance="Default"
+                        ButtonStyle="Circle"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        Icon="HeartFill"
+                        IconSize="13" />
+                    <tbutton:TIconButton
+                        Width="31"
+                        Height="31"
+                        Margin="0,0,24,12"
+                        Appearance="System"
+                        ButtonStyle="Circle"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        Icon="HeartFill"
+                        IconSize="13" />
+                    <tbutton:TIconButton
+                        Width="31"
+                        Height="31"
+                        Margin="0,0,24,12"
+                        Appearance="Primary"
+                        ButtonStyle="Circle"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        Icon="HeartFill"
+                        IconSize="13" />
+                    <tbutton:TIconButton
+                        Width="31"
+                        Height="31"
+                        Margin="0,0,24,12"
+                        Appearance="Info"
+                        ButtonStyle="Circle"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        Icon="HeartFill"
+                        IconSize="13" />
+                    <tbutton:TIconButton
+                        Width="31"
+                        Height="31"
+                        Margin="0,0,24,12"
+                        Appearance="Success"
+                        ButtonStyle="Circle"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        Icon="HeartFill"
+                        IconSize="13" />
+                    <tbutton:TIconButton
+                        Width="31"
+                        Height="31"
+                        Margin="0,0,24,12"
+                        Appearance="Warning"
+                        ButtonStyle="Circle"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        Icon="HeartFill"
+                        IconSize="13" />
+                    <tbutton:TIconButton
+                        Width="31"
+                        Height="31"
+                        Margin="0,0,24,12"
+                        Appearance="Danger"
+                        ButtonStyle="Circle"
+                        Command="{Binding ViewModel.ButtonClickCommand, Mode=OneWay}"
+                        Icon="HeartFill"
+                        IconSize="13" />
+                </WrapPanel>
+            </StackPanel>
+        </example:TControlExampleExpander>
+
+        <example:TControlExampleExpander
+            Margin="0,24,0,0"
+            Code="{Binding ViewModel.TLoadingButtonCode}"
+            Header="TLoadingButton"
+            Lang="XAML">
+            <WrapPanel Margin="0,6,0,0" Orientation="Horizontal">
+                <tbutton:TLoadingButton
+                    Width="Auto"
+                    Height="36"
+                    Margin="0,0,24,12"
+                    Appearance="Default"
+                    BorderPadding="12,0,12,0"
+                    ButtonStyle="Solid"
+                    Click="TLoadingButton_Click"
+                    ContentSpacing="12"
+                    FontSize="14"
+                    FontWeight="Bold"
+                    IsLoading="False"
+                    Tag="normal"
+                    Text="{DynamicResource TButton_TextGetLicence}"
+                    TextAlignment="Center" />
+                <tbutton:TLoadingButton
+                    Width="Auto"
+                    Height="36"
+                    Margin="0,0,24,12"
+                    Appearance="Default"
+                    BorderPadding="12,0,12,0"
+                    ContentSpacing="12"
+                    ButtonStyle="Solid"
+                    Click="TLoadingButton_Click"
+                    FontSize="14"
+                    FontWeight="Bold"
+                    Tag="timeout"
+                    Text="{DynamicResource TButton_TextGetLicenceTimeout}"
+                    TextAlignment="Center" />
+                <tbutton:TLoadingButton
+                    Width="Auto"
+                    Height="36"
+                    Margin="0,0,24,12"
+                    Appearance="Default"
+                    BorderPadding="12,0,12,0"
+                    ButtonStyle="Solid"
+                    ContentSpacing="12"
+                    Click="TLoadingButton_Click"
+                    FontSize="14"
+                    FontWeight="Bold"
+                    Tag="exception"
+                    Text="{DynamicResource TButton_TextGetLicenceException}"
+                    TextAlignment="Center" />
+                <tbutton:TLoadingButton
+                    Width="Auto"
+                    Height="36"
+                    Margin="0,0,24,12"
+                    Appearance="Default"
+                    BorderPadding="12,0,12,0"
+                    ButtonStyle="Solid"
+                    ContentSpacing="12"
+                    Click="TLoadingButton_Click"
+                    FontSize="14"
+                    FontWeight="Bold"
+                    Tag="cancel"
+                    Text="{DynamicResource TButton_TextGetLicenceCancel}"
+                    TextAlignment="Center" />
+            </WrapPanel>
+        </example:TControlExampleExpander>
+    </StackPanel>
+</Page> 

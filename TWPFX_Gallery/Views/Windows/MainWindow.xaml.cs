@@ -1,9 +1,10 @@
-﻿using TWPFX_Gallery.Resources.Languages;
+﻿using System.Diagnostics;
 using TWPFX_Gallery.ViewModels.Windows;
 using Wpf.Ui;
 using Wpf.Ui.Abstractions;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
+using Wpf.Ui.Markup;
 
 namespace TWPFX_Gallery.Views.Windows
 {
@@ -52,6 +53,7 @@ namespace TWPFX_Gallery.Views.Windows
 
             // Make sure that closing this window will begin the process of closing the application.
             Application.Current.Shutdown();
+            Debug.WriteLine($"size: {Width} {Height}");
         }
 
         INavigationView INavigationWindow.GetNavigation()

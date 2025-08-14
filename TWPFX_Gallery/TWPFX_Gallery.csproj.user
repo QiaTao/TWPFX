@@ -2,18 +2,21 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
-    <Compile Update="Controls\Icon\TLottieIconItem.xaml.cs">
+    <Compile Update="Controls\Design\TColorPaletteCard.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="Views\Pages\Design\TLottieIconographyPage.xaml.cs">
+    <Compile Update="Views\Pages\Design\TLottieIconPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Controls\Icon\TLottieIconItem.xaml">
+    <Page Update="Controls\Design\TColorPaletteCard.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Views\Pages\Design\TLottieIconographyPage.xaml">
+    <Page Update="Resources\Langs\Lang.ko-KR.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Pages\Design\TLottieIconPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -6,11 +6,13 @@ using System.Reflection;
 using System.Windows.Media;
 using System.Windows.Threading;
 using TWPFX.Service;
-using TWPFX_Gallery.Resources.Languages;
 using TWPFX_Gallery.Services;
 using TWPFX_Gallery.ViewModels.Pages;
+using TWPFX_Gallery.ViewModels.Pages.BasicInput;
+using TWPFX_Gallery.ViewModels.Pages.Design;
 using TWPFX_Gallery.ViewModels.Windows;
 using TWPFX_Gallery.Views.Pages;
+using TWPFX_Gallery.Views.Pages.BasicInput;
 using TWPFX_Gallery.Views.Pages.Design;
 using TWPFX_Gallery.Views.Windows;
 using Wpf.Ui;
@@ -53,8 +55,17 @@ namespace TWPFX_Gallery
                 services.AddSingleton<DashboardPage>();
                 services.AddSingleton<DashboardViewModel>();
 
-                services.AddSingleton<TLottieIconographyPage>();
+                services.AddSingleton<TLottieIconPage>();
+                services.AddSingleton<TSegoeIconPage>();
 
+                services.AddSingleton<TColorPalettePage>();
+                services.AddSingleton<TColorPaletteViewModel>();
+
+                services.AddSingleton<TButtonPage>();
+                services.AddSingleton<TButtonViewModel>();
+                services.AddSingleton<TRotateAnimationPage>();
+
+                services.AddSingleton<TControlExampleExpanderPage>();
 
                 services.AddSingleton<DataPage>();
                 services.AddSingleton<DataViewModel>();
@@ -75,7 +86,8 @@ namespace TWPFX_Gallery
         /// </summary>
         private async void OnStartup(object sender, StartupEventArgs e)
         {
-            LanguageService.Initialize(); // 启动时加载默认语言
+            TLocalizationService.LoadLocalization("TWPFX_Gallery"); // 启动时加载默认语言
+            TLocalizationService.LoadLocalization("TWPFX"); // 启动时加载默认语言
             TThemeService.Initialize(this);  // 初始化系统颜色
             await _host.StartAsync();
         }
